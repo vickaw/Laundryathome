@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Laundryathome</string>
+
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Change the following strings as required -->
+    <string name="back4app_app_id">4HzhEnq93bbkUQvS7PONsSW4BO0mtoOI4nx7wz0U</string>
+    <string name="back4app_client_key">tgr8NsJJ4J9N4Z527EJKqyJI3oOT2Cj5Z0Eq2vsq</string>
+
+
     <string name="title_activity_schedule_wash">ScheduleWash</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
