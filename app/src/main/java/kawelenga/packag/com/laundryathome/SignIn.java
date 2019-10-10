@@ -25,7 +25,7 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent loginin = new Intent(SignIn.this, ScheduleWash.class);
+               Intent loginin = new Intent(SignIn.this, ScheduleWashing.class);
                 startActivity(loginin);
 
 
