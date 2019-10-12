@@ -1,6 +1,7 @@
 package kawelenga.packag.com.laundryathome.ui.home;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,7 +21,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import kawelenga.packag.com.laundryathome.MainActivity;
+import kawelenga.packag.com.laundryathome.PickupAddress;
 import kawelenga.packag.com.laundryathome.R;
+import kawelenga.packag.com.laundryathome.ScheduleWashing;
+import kawelenga.packag.com.laundryathome.SignIn;
+
 import java.util.Calendar;
 
 public class HomeFragment extends Fragment {
@@ -55,7 +60,8 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
 
-                        Toast.makeText(getContext(), "Done it ", Toast.LENGTH_LONG).show();
+                        Intent pickaddress = new Intent(getContext(), PickupAddress.class);
+                        startActivity(pickaddress);
                     }
                 });
 

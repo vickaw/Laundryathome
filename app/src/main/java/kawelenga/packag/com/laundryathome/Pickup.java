@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 
 public class Pickup extends AppCompatActivity {
 
     private float x1, x2, y1, y2;
+    private Button pickupsignin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +19,19 @@ public class Pickup extends AppCompatActivity {
         setContentView(R.layout.activity_pickup);
 
         setTitle("");
+
+        pickupsignin = findViewById(R.id.btnPickupSignIn);
+        pickupsignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent picksign = new Intent(Pickup.this, SignIn.class);
+                startActivity(picksign);
+
+
+            }
+        });
+
     }
 
 

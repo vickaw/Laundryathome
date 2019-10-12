@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PickupAddress"></activity>
+        <activity android:name=".SignUp"></activity>
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".Order" />
+        <activity android:name=".PickupAddress" />
         <activity
             android:name=".ScheduleWashing"
             android:label="@string/title_activity_schedule_washing"

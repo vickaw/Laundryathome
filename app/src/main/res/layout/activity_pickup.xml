@@ -60,6 +60,7 @@
         app:srcCompat="@drawable/posthree" />
 
     <Button
+        android:id="@+id/btnPickupSignIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

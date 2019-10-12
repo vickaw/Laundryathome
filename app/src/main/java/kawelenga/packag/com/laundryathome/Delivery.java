@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 
 public class Delivery extends AppCompatActivity {
 
     private float x1, x2, y1, y2;
+    private Button btndelsignin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +19,20 @@ public class Delivery extends AppCompatActivity {
         setContentView(R.layout.activity_delivery);
 
         setTitle("");
+
+        /* Resolve of swipes
+        btndelsignin=findViewById(R.id.btnPickupSignIn);
+
+        btndelsignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent delsignin = new Intent(Delivery.this, SignIn.class);
+                startActivity(delsignin);
+
+            }
+        });
+        */
     }
 
     public boolean onTouchEvent(MotionEvent touchEvent){
@@ -37,6 +54,9 @@ public class Delivery extends AppCompatActivity {
                 break;
         }
         return false;
+
+
+
     }
 
 
