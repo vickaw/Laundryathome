@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class SignIn extends AppCompatActivity {
 
     private Button loginIntoApp;
     private TextView forgotpassword, gettingstarted;
+    private EditText signInEmail, signInPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +23,11 @@ public class SignIn extends AppCompatActivity {
         getSupportActionBar().setTitle(" ");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        loginIntoApp= findViewById(R.id.btnLogin);
+        loginIntoApp= findViewById(R.id.btnSignUp);
         forgotpassword =findViewById(R.id.txtForgotPassword);
         gettingstarted =findViewById(R.id.txtSignIn);
+        signInEmail = findViewById(R.id.edtSignUpFullName);
+        signInPassword = findViewById(R.id.edtSignUpPassword);
 
         loginIntoApp.setOnClickListener(new View.OnClickListener() {
             @Override

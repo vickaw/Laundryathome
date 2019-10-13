@@ -5,26 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:onClick="rootlayerTapped"
     android:backgroundTint="#99FFFFFF"
     android:backgroundTintMode="src_over"
     tools:context=".SignIn">
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="83dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="12dp"
         android:alpha="1"
         android:text="Email address"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSignUpFullName" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edtSignUpPassword"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
@@ -40,32 +41,37 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Password"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSignUpEmail" />
 
     <TextView
         android:id="@+id/txtSignIn"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="46dp"
         android:text="Already have an account SIGN IN"
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="379dp"
+        android:id="@+id/edtSignUpFullName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPersonName"
@@ -75,15 +81,20 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/editText4"
-        android:layout_width="379dp"
+        android:id="@+id/edtSignUpEmail"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:hint="john@washme.com"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|text|textEmailAddress"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -91,13 +102,13 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:alpha="1"
         android:text="Full Name"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -105,20 +116,20 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:text="Mobile"
         android:textColor="#000000"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSignUpPassword" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:alpha="1"
         android:gravity="center_vertical"
         android:text="Sign up"
@@ -130,24 +141,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSignUp"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:background="#FFC107"
-        android:text="Sign In"
+        android:text="Sign Up"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSignUpMobile" />
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="379dp"
+        android:id="@+id/edtSignUpMobile"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPassword|phone"

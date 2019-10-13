@@ -8,6 +8,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.parse.ParseInstallation;
+
 public class MainActivity extends AppCompatActivity {
 
     private float x1, x2, y1, y2;
@@ -17,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+       // ParseInstallation.getCurrentInstallation().saveInBackground();
+
 
         mbtnSignIn = findViewById(R.id.btnSignIn);
 
