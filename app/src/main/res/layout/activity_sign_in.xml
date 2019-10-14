@@ -133,7 +133,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSignInGoogle"
         android:layout_width="377dp"
         android:layout_height="38dp"
         android:layout_marginTop="44dp"
@@ -158,7 +158,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSignInGoogle" />
 
     <EditText
         android:id="@+id/edtSignUpMobile"

@@ -46,7 +46,6 @@ public class SignUp extends AppCompatActivity {
                 } else {
 
 
-
                     ParseUser user = new ParseUser();
                     // Set the user's username and password, which can be obtained by a forms
                     user.setUsername(txtSignupFullName.getText().toString());
