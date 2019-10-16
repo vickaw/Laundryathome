@@ -17,22 +17,11 @@ public class Delivery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery);
-
         setTitle("");
 
-        /* Resolve of swipes
-        btndelsignin=findViewById(R.id.btnPickupSignIn);
+        // Resolve of swipes
 
-        btndelsignin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent delsignin = new Intent(Delivery.this, SignIn.class);
-                startActivity(delsignin);
-
-            }
-        });
-        */
     }
 
     public boolean onTouchEvent(MotionEvent touchEvent){

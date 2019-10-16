@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:onClick="rootlayerTapped"
     android:backgroundTint="#99FFFFFF"
     android:backgroundTintMode="src_over"
+    android:onClick="rootlayerTapped"
     tools:context=".SignIn">
 
     <TextView
@@ -55,10 +55,10 @@
         android:layout_width="wrap_content"
         android:layout_height="29dp"
         android:layout_marginTop="46dp"
-        android:text="Already have an account SIGN IN"
-        android:textColor="#000000"
+        android:text="Already have an account ? CLICK HERE TO SIGN IN"
+        android:textColor="#E91E63"
         android:textSize="14sp"
-        android:textStyle="italic"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
@@ -144,7 +144,7 @@
         android:id="@+id/btnSignUp"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:background="#FFC107"
         android:text="Sign Up"
         android:textColor="#FFFFFF"

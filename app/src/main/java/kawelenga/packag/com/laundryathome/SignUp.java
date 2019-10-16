@@ -3,6 +3,7 @@ package kawelenga.packag.com.laundryathome;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -19,6 +20,7 @@ public class SignUp extends AppCompatActivity {
 
     Button btnregNewUser;
     EditText txtSignupFullName,txtSignupEmail, txtSignupPassword, txtSignupMobile;
+    TextView changetoSignin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,55 +34,74 @@ public class SignUp extends AppCompatActivity {
         txtSignupFullName = findViewById(R.id.edtSignUpFullName);
         txtSignupMobile =findViewById(R.id.edtSignUpMobile);
         txtSignupPassword =findViewById(R.id.edtSignUpPassword);
+        changetoSignin = findViewById(R.id.txtSignIn);
+
+        changetoSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent getin = new Intent(SignUp.this, SignIn.class);
+                startActivity(getin);
+
+
+            }
+        });
 
 
         btnregNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (txtSignupEmail.getText().toString().equals("") || txtSignupFullName.getText().toString().equals("") ||
-                        txtSignupMobile.getText().toString().equals("") || txtSignupMobile.getText().toString().equals("")) {
-
-                    FancyToast.makeText(SignUp.this, " Hi " + txtSignupFullName.getText().toString() + ". Please complete all the fields in order to sign up." ,
-                            FancyToast.LENGTH_LONG, FancyToast.INFO, true).show();
-                } else {
+                try {
 
 
-                    ParseUser user = new ParseUser();
-                    // Set the user's username and password, which can be obtained by a forms
-                    user.setUsername(txtSignupFullName.getText().toString());
-                    user.setPassword(txtSignupPassword.getText().toString());
-                    user.setEmail(txtSignupEmail.getText().toString());
-                    user.put("mobile", txtSignupMobile.getText().toString());
+                    if (txtSignupEmail.getText().toString().equals("") || txtSignupFullName.getText().toString().equals("") ||
+                            txtSignupMobile.getText().toString().equals("") || txtSignupMobile.getText().toString().equals("")) {
+
+                        FancyToast.makeText(SignUp.this, " Hi " + txtSignupFullName.getText().toString() + ". Please complete all the fields in order to sign up.",
+                                FancyToast.LENGTH_LONG, FancyToast.INFO, true).show();
+                    } else {
 
 
-                    final ProgressDialog progressDialog = new ProgressDialog(SignUp.this);
-                    progressDialog.setMessage("Please wait ! " + txtSignupFullName.getText().toString());
-                    progressDialog.show();
-                    user.signUpInBackground(new SignUpCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            if (e == null) {
-                                //alertDisplayer("Sucessful Sign Up!","Welcome" + <Insert Username Here> + "!");
-                                FancyToast.makeText(SignUp.this, "Welcome " + txtSignupFullName.getText().toString(),
-                                        FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                        ParseUser user = new ParseUser();
+                        // Set the user's username and password, which can be obtained by a forms
+                        user.setUsername(txtSignupEmail.getText().toString());
+                        user.setPassword(txtSignupPassword.getText().toString());
+                        user.setEmail(txtSignupEmail.getText().toString());
+                        user.put("mobile", txtSignupMobile.getText().toString());
+                        user.put("fullname", txtSignupFullName.getText().toString());
 
-                                //transactionToSocialMedia();
 
-                            } else {
-                                ParseUser.logOut();
-                                //Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                                FancyToast.makeText(SignUp.this, e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.INFO, true).show();
+                        final ProgressDialog progressDialog = new ProgressDialog(SignUp.this);
+                        progressDialog.setMessage("Please wait ! " + txtSignupFullName.getText().toString());
+                        progressDialog.show();
+                        user.signUpInBackground(new SignUpCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                if (e == null) {
+                                    //alertDisplayer("Sucessful Sign Up!","Welcome" + <Insert Username Here> + "!");
+                                    FancyToast.makeText(SignUp.this, "Welcome " + txtSignupFullName.getText().toString(),
+                                            FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
 
+                                    Intent loginin = new Intent(SignUp.this, ScheduleWashing.class);
+                                    startActivity(loginin);
+
+
+                                } else {
+                                    ParseUser.logOut();
+                                    //Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                    FancyToast.makeText(SignUp.this, e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.INFO, true).show();
+
+                                }
+                                progressDialog.dismiss();
                             }
-                            progressDialog.dismiss();
-                        }
-                    });
+                        });
 
 
-
+                    }
+                } catch ( Exception e) {
+                    e.printStackTrace();
                 }
-
 
 
 

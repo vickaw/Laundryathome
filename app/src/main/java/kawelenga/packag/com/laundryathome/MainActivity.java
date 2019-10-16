@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
        // ParseInstallation.getCurrentInstallation().saveInBackground();
 
 
-        mbtnSignIn = findViewById(R.id.btnSignIn);
+        mbtnSignIn = findViewById(R.id.btnSignUp);
 
         mbtnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
