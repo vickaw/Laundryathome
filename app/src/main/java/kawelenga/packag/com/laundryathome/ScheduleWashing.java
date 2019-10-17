@@ -2,6 +2,11 @@ package kawelenga.packag.com.laundryathome;
 
 import android.os.Bundle;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -15,6 +20,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.parse.ParseUser;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -27,6 +33,7 @@ import android.view.Menu;
 public class ScheduleWashing extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +74,31 @@ public class ScheduleWashing extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_settings:
-                FancyToast.makeText(this, "Well done ", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                //get current user and log them out
+
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+                if (currentUser != null) {
+                    // do stuff with the user
+                    //ParseUser.logOut();
+                    FancyToast.makeText(this, "Logging our user : " + currentUser.getUsername().toString(), FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                    ParseUser.logOut();
+                    //finish();
+
+                } else if (!account.equals(null)) {
+
+                    // show the signup or login screen
+                    FancyToast.makeText(this, " definitely G+ : " + account.getEmail().toString(), FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                    signOut();
+
+                } else {
+
+                    FancyToast.makeText(this, " Could be facebook", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+
+                }
+
+
+
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -80,7 +111,14 @@ public class ScheduleWashing extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
- public void UserLogout() {
-
+    private void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                        finish();
+                    }
+                });
     }
 }
