@@ -5,12 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -22,14 +29,20 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
+import java.util.Arrays;
+
 public class SignIn extends AppCompatActivity {
 
     int RC_SIGN_IN=0;
     GoogleSignInClient mGoogleSignInClient;
+    private static final String EMAIL = "email";
 
     private Button loginIntoApp,useGoogleLogin;
     private TextView forgotpassword, gettingstarted;
     private EditText signInEmail, signInPassword, signinFullName;
+    private CallbackManager callbackManager;
+    private LoginButton loginButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +59,34 @@ public class SignIn extends AppCompatActivity {
         signInPassword = findViewById(R.id.txtSignInPassword);
         useGoogleLogin=findViewById(R.id.btnSignInGoogle);
 
+        // useFacebook= findViewById(R.id.btnFacebook);
+        loginButton =findViewById(R.id.btnFacebook);
+
+
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.setPermissions(Arrays.asList(EMAIL));
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+                FancyToast.makeText(SignIn.this, "Welcome ", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+
+                Intent loginin = new Intent(SignIn.this, ScheduleWashing.class);
+                startActivity(loginin);
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
+
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -55,6 +96,10 @@ public class SignIn extends AppCompatActivity {
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mGoogleSignInClient.signOut();
+
+
+        // Code to login to Facebook ...insert here?
+
 
 
         loginIntoApp.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +120,7 @@ public class SignIn extends AppCompatActivity {
 
                                                 Intent loginin = new Intent(SignIn.this, ScheduleWashing.class);
                                                 startActivity(loginin);
-                                                
+
 
                                             } else {
                                                 ParseUser.logOut();
@@ -124,10 +169,23 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
+        /*
+        useFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        }); */
+
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+       //This is additional for Facebook
+        callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
@@ -137,7 +195,10 @@ public class SignIn extends AppCompatActivity {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
+
     }
+
+
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
@@ -185,5 +246,10 @@ public class SignIn extends AppCompatActivity {
     }
 
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivityForResult(myIntent, 0);
+        return true;
+    }
 
 }

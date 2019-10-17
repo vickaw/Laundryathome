@@ -3,7 +3,9 @@ package kawelenga.packag.com.laundryathome;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -72,5 +74,12 @@ public class ForgotPassword extends AppCompatActivity {
         } catch ( Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent myIntent = new Intent(getApplicationContext(), SignIn.class);
+        startActivityForResult(myIntent, 0);
+        return true;
+
     }
 }

@@ -7,6 +7,8 @@
     <string name="back4app_app_id">4HzhEnq93bbkUQvS7PONsSW4BO0mtoOI4nx7wz0U</string>
     <string name="back4app_client_key">tgr8NsJJ4J9N4Z527EJKqyJI3oOT2Cj5Z0Eq2vsq</string>
 
+    <string name="facebook_app_id">463617997603190</string>
+    <string name="fb_login_protocol_scheme">fb463617997603190</string>Copy Code
 
     <string name="title_activity_schedule_wash">ScheduleWash</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
