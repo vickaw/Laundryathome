@@ -1,6 +1,7 @@
 package kawelenga.packag.com.laundryathome.ui.home;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -21,6 +23,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import kawelenga.packag.com.laundryathome.MainActivity;
+import kawelenga.packag.com.laundryathome.Order;
 import kawelenga.packag.com.laundryathome.PickupAddress;
 import kawelenga.packag.com.laundryathome.R;
 import kawelenga.packag.com.laundryathome.ScheduleWashing;
@@ -33,7 +36,7 @@ public class HomeFragment extends Fragment {
     //private Boolean nextAction;
 
     private HomeViewModel homeViewModel;
-    private TextView mDisplayDate;
+    private TextView mDisplayDate, mDisplayTime, mPickDate, mPickTime;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private Button nextActivity;
     private static final String TAG = "Home";
@@ -48,7 +51,10 @@ public class HomeFragment extends Fragment {
         //final TextView tv = root.findViewById(R.id.txt_home3);
 
         nextActivity = root.findViewById(R.id.btnNext);
-        mDisplayDate =root.findViewById(R.id.text_home2);
+        mDisplayDate =root.findViewById(R.id.edtPickDate);
+        mDisplayTime=root.findViewById(R.id.edtPickTime);
+        mPickDate =root.findViewById(R.id.edtDeliveryDate);
+        mPickTime=root.findViewById(R.id.edtDeliveryTime);
 
 
         homeViewModel.getText().observe(this, new Observer<String>() {
@@ -60,7 +66,13 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
 
-                        Intent pickaddress = new Intent(getContext(), PickupAddress.class);
+                        //// I assume Page.class is your second ativity
+                        //Intent intent = new Intent(this, Page.class);
+                        //intent.putExtra("arg", getText()); // getText() SHOULD NOT be static!!!
+                        //startActivity(intent);
+
+                        Intent pickaddress = new Intent(getContext(),PickupAddress.class);
+                       pickaddress.putExtra("PickD", mDisplayDate.getText());
                         startActivity(pickaddress);
                     }
                 });
@@ -102,6 +114,87 @@ public class HomeFragment extends Fragment {
 
 
                 });
+
+
+                mDisplayTime.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Calendar mcurrentTime = Calendar.getInstance();
+                        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                        int minute = mcurrentTime.get(Calendar.MINUTE);
+                        TimePickerDialog mTimePicker;
+                        mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                                mDisplayTime.setText( selectedHour + ":" + selectedMinute);
+                            }
+                        }, hour, minute, true);//Yes 24 hour time
+                        mTimePicker.setTitle("Select Time");
+                        mTimePicker.show();
+                    }
+                });
+
+                mPickDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Toast.makeText(getContext(), "Date Listener working ! ", Toast.LENGTH_LONG).show();
+                        Calendar cal = Calendar.getInstance();
+                        int year = cal.get(Calendar.YEAR);
+                        int month = cal.get(Calendar.MONTH);
+                        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                month = month + 1;
+                                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+
+                                String date = month + "/" + day + "/" + year;
+                                mPickDate.setText(date);
+                            }
+                        };
+
+
+                        DatePickerDialog dialog = new DatePickerDialog(
+                                getContext(),
+                                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                                mDateSetListener,
+                                year,month,day);
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.show();
+
+                    }
+
+
+
+
+
+                });
+
+
+                mPickTime.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Calendar mcurrentTime = Calendar.getInstance();
+                        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                        int minute = mcurrentTime.get(Calendar.MINUTE);
+                        TimePickerDialog mTimePicker;
+                        mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                                mPickTime.setText( selectedHour + ":" + selectedMinute);
+                            }
+                        }, hour, minute, true);//Yes 24 hour time
+                        mTimePicker.setTitle("Select Time");
+                        mTimePicker.show();
+                    }
+                });
+
+
+
+
             }
         });
         return root;
