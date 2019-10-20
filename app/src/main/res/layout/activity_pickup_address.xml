@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Select pickup date"
+        android:text="What your pickup address?"
         android:textAllCaps="true"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,6 +37,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtPostCode" />
+
 
     <TextView
         android:id="@+id/textView15"
@@ -84,7 +85,7 @@
         android:layout_height="92dp"
         android:layout_marginTop="12dp"
         android:background="#38B6FF"
-        android:drawableTop="@drawable/homew"
+        android:drawableTop="@drawable/homeicon"
         android:paddingTop="10dp"
         android:text="Home"
         android:textAllCaps="false"
@@ -127,7 +128,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Same as deliver address"
+        android:checked="true"
+        android:text="Same as delivery address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.546"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,6 +146,7 @@
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="#41252323"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -160,6 +163,7 @@
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="#41252323"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -176,6 +180,7 @@
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="#41252323"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -193,6 +198,7 @@
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="#41252323"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txttextime " />
