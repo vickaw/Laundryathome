@@ -1,6 +1,8 @@
 package kawelenga.packag.com.laundryathome;
 
+import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,8 +12,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class TabAdapter extends FragmentPagerAdapter {
 
-    public TabAdapter(@NonNull FragmentManager fm) {
+    private final Bundle fragmentBundle;
+
+    public TabAdapter(@NonNull FragmentManager fm, Bundle data) {
         super(fm);
+        fragmentBundle =data;
     }
 
     @Override
@@ -19,7 +24,11 @@ public class TabAdapter extends FragmentPagerAdapter {
         switch (tabposition) {
 
             case 0:
+
+               //Bundle bundle = new Bundle();
+                //bundle.putString("Pick", "testing testing");
                 DryClean drycleanTab=new DryClean();
+                drycleanTab.setArguments(fragmentBundle);
                 return drycleanTab;
             case 1:
                 Laundry laundryTab = new Laundry();

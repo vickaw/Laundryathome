@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -27,7 +28,7 @@ import java.util.List;
  */
 public class DryClean extends Fragment {
 
-    Button n1,n2,n3,n4,n5, p1, p2, p3,p4,p5;
+    Button n1,n2,n3,n4,n5, p1, p2, p3,p4,p5, btnSubmission;
     TextView i1,i2,i3,i4,i5, suitItem, suitPrice, dressItem, dressPrice, totalPrice,
     shirtItem,shirtPrice, touserItem, trouserPrice,trouserItem, jacketItem, jacketPrice;
     Integer c1,c2,c3,c4,c5;
@@ -37,7 +38,14 @@ public class DryClean extends Fragment {
         // Required empty public constructor
     }
 
-
+/*
+@Override
+public void onCreate(Bundle state) {
+    super.onCreate(state);
+    final Bundle args = getArguments();
+    final int side = args.getInt("SIDE");
+}
+ */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,6 +72,7 @@ public class DryClean extends Fragment {
         c3 =Integer.parseInt(i3.getText().toString());
         c4 =Integer.parseInt(i4.getText().toString());
         c5 =Integer.parseInt(i5.getText().toString());
+        btnSubmission=view.findViewById(R.id.button3);
 
         totalPrice =view.findViewById(R.id.textView85);
         grandTot =0;
@@ -320,7 +329,26 @@ public class DryClean extends Fragment {
             }
         });
 
+
+        // Send for submission
+
+        btnSubmission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               // Bundle bundle = getIntent().getExtras();
+                //String strtext = getArguments().getString("edttext");
+
+                String title = getArguments().getString("PickD");
+                Toast.makeText(getContext(),title, Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
         return view;
+
+
 
 
     }

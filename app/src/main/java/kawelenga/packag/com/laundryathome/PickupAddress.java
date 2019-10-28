@@ -70,6 +70,8 @@ public class PickupAddress extends AppCompatActivity {
         String passedArg = getIntent().getExtras().getString("PickD");
         Toast.makeText(this, passedArg, Toast.LENGTH_SHORT).show();
 
+
+
         // Initialize with home address
         FillinAddress("HomeAddress", account.getEmail());
         Testme(homebtn);
@@ -137,9 +139,21 @@ public class PickupAddress extends AppCompatActivity {
                 }
 
 
+                /* Testing new method to save data
                 //Toast.makeText(this,"Saved" + )
                Intent pick = new Intent(PickupAddress.this, Order.class);
                 startActivity(pick);
+
+
+                 */
+
+                Intent newIntent = new Intent(PickupAddress.this, Order.class);
+                Bundle bundle = getIntent().getExtras();
+                if (bundle != null) {
+                    newIntent.putExtras(bundle);
+                }
+                startActivity(newIntent);
+
             }
         });
 

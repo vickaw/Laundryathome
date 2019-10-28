@@ -27,6 +27,8 @@ public class Laundry extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_laundry, container, false);
 
+
+
         return view;
     }
 

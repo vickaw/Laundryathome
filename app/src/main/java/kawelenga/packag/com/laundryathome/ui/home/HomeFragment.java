@@ -71,9 +71,24 @@ public class HomeFragment extends Fragment {
                         //intent.putExtra("arg", getText()); // getText() SHOULD NOT be static!!!
                         //startActivity(intent);
 
+                       /*** Alternative method
                         Intent pickaddress = new Intent(getContext(),PickupAddress.class);
-                       pickaddress.putExtra("PickD", mDisplayDate.getText());
+                        pickaddress.putExtra("PickD", mDisplayDate.getText());
+                        pickaddress.putExtra("PickT", mDisplayTime.getText());
+                        pickaddress.putExtra("DelD", mPickDate.getText());
+                        pickaddress.putExtra("DelT", mPickTime.getText());
                         startActivity(pickaddress);
+                        */
+                        // Trying with Bundle
+
+                        Intent intent = new Intent(getContext(),PickupAddress.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("PickD", mDisplayDate.getText().toString());
+                        bundle.putString("PickT", mDisplayTime.getText().toString());
+                        bundle.putString("DelD", mPickDate.getText().toString());
+                        bundle.putString("DelT", mPickTime.getText().toString());
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
                 });
 

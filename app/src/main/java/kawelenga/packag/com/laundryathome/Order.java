@@ -32,15 +32,35 @@ public class Order extends AppCompatActivity {
         btndryclean= findViewById(R.id.button);
         btnLaundry=findViewById(R.id.button9);
 
+        //Get this now
+
+        Bundle bundle = getIntent().getExtras();
+        String title = bundle.getString("PickD", "Default");
+        Toast.makeText(this, title, Toast.LENGTH_SHORT).show();
+
+        // This is the setting the arguments
+
+        //Bundle bundle = new Bundle();
+        bundle.putString("PickD",title);
+        //mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), bundle);
+        //mPager.setAdapter(mPagerAdapter);
+
+
         // Get Adapater going
 
         viewpager=findViewById(R.id.viewPager);
-        tabAdapter=new TabAdapter(getSupportFragmentManager());
+        tabAdapter=new TabAdapter(getSupportFragmentManager(), bundle);
         viewpager.setAdapter(tabAdapter);
 
 
         tabLayout=findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewpager,false);
+
+        //String passedArg = getIntent().getExtras().getString("PickD");
+        //Toast.makeText(this, passedArg, Toast.LENGTH_SHORT).show();
+
+
+
     }
 
 }
