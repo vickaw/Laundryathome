@@ -38,12 +38,8 @@ public class Order extends AppCompatActivity {
         String title = bundle.getString("PickD", "Default");
         Toast.makeText(this, title, Toast.LENGTH_SHORT).show();
 
-        // This is the setting the arguments
-
-        //Bundle bundle = new Bundle();
+        // This is the setting the arguments to fragments
         bundle.putString("PickD",title);
-        //mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), bundle);
-        //mPager.setAdapter(mPagerAdapter);
 
 
         // Get Adapater going
@@ -56,8 +52,6 @@ public class Order extends AppCompatActivity {
         tabLayout=findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewpager,false);
 
-        //String passedArg = getIntent().getExtras().getString("PickD");
-        //Toast.makeText(this, passedArg, Toast.LENGTH_SHORT).show();
 
 
 

@@ -24,9 +24,8 @@ public class TabAdapter extends FragmentPagerAdapter {
         switch (tabposition) {
 
             case 0:
+                // See implementation of data passing through
 
-               //Bundle bundle = new Bundle();
-                //bundle.putString("Pick", "testing testing");
                 DryClean drycleanTab=new DryClean();
                 drycleanTab.setArguments(fragmentBundle);
                 return drycleanTab;

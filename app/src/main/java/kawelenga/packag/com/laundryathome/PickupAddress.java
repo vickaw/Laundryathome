@@ -139,13 +139,6 @@ public class PickupAddress extends AppCompatActivity {
                 }
 
 
-                /* Testing new method to save data
-                //Toast.makeText(this,"Saved" + )
-               Intent pick = new Intent(PickupAddress.this, Order.class);
-                startActivity(pick);
-
-
-                 */
 
                 Intent newIntent = new Intent(PickupAddress.this, Order.class);
                 Bundle bundle = getIntent().getExtras();

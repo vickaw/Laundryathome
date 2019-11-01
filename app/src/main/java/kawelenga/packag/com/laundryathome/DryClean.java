@@ -1,6 +1,7 @@
 package kawelenga.packag.com.laundryathome;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.core.internal.view.SupportMenuItem;
@@ -38,14 +39,7 @@ public class DryClean extends Fragment {
         // Required empty public constructor
     }
 
-/*
-@Override
-public void onCreate(Bundle state) {
-    super.onCreate(state);
-    final Bundle args = getArguments();
-    final int side = args.getInt("SIDE");
-}
- */
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -336,11 +330,15 @@ public void onCreate(Bundle state) {
             @Override
             public void onClick(View v) {
 
-               // Bundle bundle = getIntent().getExtras();
-                //String strtext = getArguments().getString("edttext");
+               // Data passed from activity to activity and finally to the fragments
 
                 String title = getArguments().getString("PickD");
                 Toast.makeText(getContext(),title, Toast.LENGTH_SHORT).show();
+
+                //Open the new screen
+
+                Intent newIntent = new Intent(getContext(), Invoice.class);
+                startActivity(newIntent);
 
 
             }

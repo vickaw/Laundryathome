@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Invoice" >
+
+    <TextView
+        android:id="@+id/textView54"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D6DADD" />
+
+    <Button
+        android:id="@+id/btnExit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFC107"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="DONE" />
+
+    <TextView
+        android:id="@+id/textView92"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D6DADD" />
+
+    <ScrollView
+        android:id="@+id/svInvoice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#95D6DADD"
+                android:gravity="center_horizontal"
+                android:text="Proforma Tax Invoice "
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pick up Address:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtPStreet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtPSurburb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtPCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView58"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView59"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D6DADD"
+                android:text="Delivery Address :"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtDStreet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D6DADD" />
+
+            <TextView
+                android:id="@+id/txtDSurburb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D6DADD" />
+
+            <TextView
+                android:id="@+id/txtDCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D6DADD" />
+
+            <TextView
+                android:id="@+id/txtDPostCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D6DADD" />
+
+            <TextView
+                android:id="@+id/textView64"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="457dp"
+                android:layout_height="552dp">
+
+                <TextView
+                    android:id="@+id/textView65"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Dry Clean"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.008"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView67"
+                    android:layout_width="145dp"
+                    android:layout_height="19dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Item "
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/textView68"
+                    app:layout_constraintHorizontal_bias="0.309"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView65" />
+
+                <TextView
+                    android:id="@+id/textView68"
+                    android:layout_width="163dp"
+                    android:layout_height="17dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:text="Quantity"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/textView83"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView69"
+                    android:layout_width="140dp"
+                    android:layout_height="21dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Suit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView67" />
+
+                <TextView
+                    android:id="@+id/textView70"
+                    android:layout_width="131dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="48dp"
+                    android:layout_marginRight="48dp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView86"
+                    app:layout_constraintTop_toBottomOf="@+id/textView68" />
+
+                <TextView
+                    android:id="@+id/textView71"
+                    android:layout_width="116dp"
+                    android:layout_height="19dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="64dp"
+                    android:layout_marginRight="64dp"
+                    android:text="Jacket"
+                    app:layout_constraintEnd_toStartOf="@+id/textView72"
+                    app:layout_constraintHorizontal_bias="0.291"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView69" />
+
+                <TextView
+                    android:id="@+id/textView72"
+                    android:layout_width="126dp"
+                    android:layout_height="19dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginRight="56dp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView87"
+                    app:layout_constraintTop_toBottomOf="@+id/textView70" />
+
+                <TextView
+                    android:id="@+id/textView73"
+                    android:layout_width="131dp"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Shirt"
+                    app:layout_constraintEnd_toStartOf="@+id/textView74"
+                    app:layout_constraintHorizontal_bias="0.121"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView71" />
+
+                <TextView
+                    android:id="@+id/textView74"
+                    android:layout_width="110dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="72dp"
+                    android:layout_marginRight="72dp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView88"
+                    app:layout_constraintTop_toBottomOf="@+id/textView72" />
+
+                <TextView
+                    android:id="@+id/textView75"
+                    android:layout_width="115dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="64dp"
+                    android:layout_marginRight="64dp"
+                    android:text="Dress"
+                    app:layout_constraintEnd_toStartOf="@+id/textView76"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView73" />
+
+                <TextView
+                    android:id="@+id/textView76"
+                    android:layout_width="128dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginRight="60dp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView89"
+                    app:layout_constraintTop_toBottomOf="@+id/textView74" />
+
+                <TextView
+                    android:id="@+id/textView77"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Laundry"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.044"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView75" />
+
+                <TextView
+                    android:id="@+id/textView78"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Number Kgs"
+                    app:layout_constraintEnd_toStartOf="@+id/textView79"
+                    app:layout_constraintHorizontal_bias="0.054"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView77" />
+
+                <TextView
+                    android:id="@+id/textView79"
+                    android:layout_width="142dp"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView77"
+                    tools:layout_editor_absoluteX="120dp" />
+
+                <TextView
+                    android:id="@+id/textView80"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="44dp"
+                    android:text="Other "
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView78" />
+
+                <TextView
+                    android:id="@+id/textView81"
+                    android:layout_width="115dp"
+                    android:layout_height="17dp"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView82"
+                    app:layout_constraintHorizontal_bias="0.095"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView80" />
+
+                <TextView
+                    android:id="@+id/textView82"
+                    android:layout_width="111dp"
+                    android:layout_height="17dp"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView80"
+                    tools:layout_editor_absoluteX="123dp" />
+
+                <TextView
+                    android:id="@+id/textView83"
+                    android:layout_width="98dp"
+                    android:layout_height="17dp"
+                    android:layout_marginTop="44dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="Price"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView86"
+                    android:layout_width="91dp"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView83" />
+
+                <TextView
+                    android:id="@+id/textView87"
+                    android:layout_width="88dp"
+                    android:layout_height="19dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView86" />
+
+                <TextView
+                    android:id="@+id/textView88"
+                    android:layout_width="50dp"
+                    android:layout_height="17dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginRight="56dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView87" />
+
+                <TextView
+                    android:id="@+id/textView89"
+                    android:layout_width="40dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="64dp"
+                    android:layout_marginRight="64dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView88" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
