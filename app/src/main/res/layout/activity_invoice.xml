@@ -26,7 +26,8 @@
         android:id="@+id/textView92"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#D6DADD" />
+        android:background="#D6DADD"
+        android:gravity="center_horizontal" />
 
     <ScrollView
         android:id="@+id/svInvoice"

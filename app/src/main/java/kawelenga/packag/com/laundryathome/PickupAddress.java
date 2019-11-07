@@ -142,6 +142,11 @@ public class PickupAddress extends AppCompatActivity {
 
                 Intent newIntent = new Intent(PickupAddress.this, Order.class);
                 Bundle bundle = getIntent().getExtras();
+                bundle.putString("HStre", streetA.getText().toString());
+                bundle.putString("HSurb", surburbA.getText().toString());
+                bundle.putString("HCity", cityA.getText().toString());
+                bundle.putString("HPost", postcodeA.getText().toString());
+
                 if (bundle != null) {
                     newIntent.putExtras(bundle);
                 }

@@ -22,6 +22,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.parse.ParseUser;
+
 import kawelenga.packag.com.laundryathome.MainActivity;
 import kawelenga.packag.com.laundryathome.Order;
 import kawelenga.packag.com.laundryathome.PickupAddress;
@@ -56,6 +60,11 @@ public class HomeFragment extends Fragment {
         mPickDate =root.findViewById(R.id.edtDeliveryDate);
         mPickTime=root.findViewById(R.id.edtDeliveryTime);
 
+        // Workout if User logged in using Google/ Parse / Facebook
+
+        final ParseUser currentUser = ParseUser.getCurrentUser();
+        final GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
+
 
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
@@ -83,6 +92,7 @@ public class HomeFragment extends Fragment {
 
                         Intent intent = new Intent(getContext(),PickupAddress.class);
                         Bundle bundle = new Bundle();
+                        bundle.putString("UserE", account.getEmail());
                         bundle.putString("PickD", mDisplayDate.getText().toString());
                         bundle.putString("PickT", mDisplayTime.getText().toString());
                         bundle.putString("DelD", mPickDate.getText().toString());

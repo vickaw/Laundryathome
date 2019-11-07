@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.core.internal.view.SupportMenuItem;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
+import java.sql.Date;
 import java.util.List;
 
 
@@ -29,11 +31,11 @@ import java.util.List;
  */
 public class DryClean extends Fragment {
 
-    Button n1,n2,n3,n4,n5, p1, p2, p3,p4,p5, btnSubmission;
-    TextView i1,i2,i3,i4,i5, suitItem, suitPrice, dressItem, dressPrice, totalPrice,
-    shirtItem,shirtPrice, touserItem, trouserPrice,trouserItem, jacketItem, jacketPrice;
-    Integer c1,c2,c3,c4,c5;
-    double grandTot;
+    private Button n1,n2,n3,n4,n5, p1, p2, p3,p4,p5, btnSubmission;
+    private TextView i1,i2,i3,i4,i5, suitItem, suitPrice, dressItem, dressPrice, totalPrice,
+    shirtItem,shirtPrice, touserItem, trouserPrice,trouserItem, jacketItem, jacketPrice,suitQty, dressQty, jacketQty, trouserQty,shirtQty, inNum ;
+    private Integer c1,c2,c3,c4,c5, invoiceNum, test;
+    private double grandTot;
 
     public DryClean() {
         // Required empty public constructor
@@ -67,9 +69,13 @@ public class DryClean extends Fragment {
         c4 =Integer.parseInt(i4.getText().toString());
         c5 =Integer.parseInt(i5.getText().toString());
         btnSubmission=view.findViewById(R.id.button3);
+        inNum= view.findViewById(R.id.idInvNo);
+
 
         totalPrice =view.findViewById(R.id.textView85);
         grandTot =0;
+        invoiceNum=0;
+
 
 
         // Pull up the pricing sheet
@@ -84,6 +90,12 @@ public class DryClean extends Fragment {
         trouserPrice = view.findViewById(R.id.textView39);
         jacketItem = view.findViewById(R.id.textView35);
         jacketPrice = view.findViewById(R.id.textView38);
+
+        suitQty= view.findViewById(R.id.textView22);
+        dressQty = view.findViewById(R.id.textView46);
+        shirtQty = view.findViewById(R.id.textView45);
+        trouserQty = view.findViewById(R.id.textView44);
+        jacketQty = view.findViewById(R.id.textView43);
 
 
         final ParseQuery<ParseObject> queryAddr = ParseQuery.getQuery("Pricesheet");
@@ -176,6 +188,23 @@ public class DryClean extends Fragment {
         });
 
 
+        // //
+        final ParseQuery<ParseObject> queryAddrAll = ParseQuery.getQuery("RequestNo");
+        queryAddr.whereEqualTo("item","suit");
+        queryAddr.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+
+                if (objects.size() > 0 && e == null) {
+
+                    for (ParseObject k : objects) {
+                        suitItem.setText(k.get("item").toString());
+                        suitPrice.setText(k.get("price").toString());;
+                    }
+
+                }
+            }
+        });
 
 
 
@@ -324,6 +353,7 @@ public class DryClean extends Fragment {
         });
 
 
+
         // Send for submission
 
         btnSubmission.setOnClickListener(new View.OnClickListener() {
@@ -332,16 +362,113 @@ public class DryClean extends Fragment {
 
                // Data passed from activity to activity and finally to the fragments
 
-                String title = getArguments().getString("PickD");
-                Toast.makeText(getContext(),title, Toast.LENGTH_SHORT).show();
+                getNextCount();
 
-                //Open the new screen
 
-                Intent newIntent = new Intent(getContext(), Invoice.class);
-                startActivity(newIntent);
+                // Current fragment Data
+
+
+                final String picku = getArguments().getString("UserE");
+                final String pickd = getArguments().getString("PickD");
+                final String pickt = getArguments().getString("PickT");
+                final String deld = getArguments().getString("DelD");
+                final String delt = getArguments().getString("DelT");
+
+
+                final String homS = getArguments().getString("HStre");
+                final String homSb = getArguments().getString("HSurb");
+                final String nomC = getArguments().getString("HCity");
+                final String nomP = getArguments().getString("HPost");
+
+                Toast.makeText(getContext(),picku, Toast.LENGTH_SHORT).show();
+
+
+                // Submit to Laundering for Saving
+
+
+                try {
+
+                    final ParseObject pickupRequest = new ParseObject("Laundering");
+                    pickupRequest.put("cusname", picku);
+                    pickupRequest.put("pickdate", pickd);
+                    pickupRequest.put("picktime", pickt);
+                    pickupRequest.put("deliverydate", deld);
+                    pickupRequest.put("deliverytime", delt);
+                    pickupRequest.put("suitqty", Double.parseDouble(suitQty.getText().toString()));
+                    pickupRequest.put("suitprice", Double.parseDouble(suitPrice.getText().toString()));
+                    pickupRequest.put("dressqty", Double.parseDouble(dressQty.getText().toString()));
+                    pickupRequest.put("dressprice", Double.parseDouble(dressPrice.getText().toString()));
+                    pickupRequest.put("shirtqty",Double.parseDouble(shirtQty.getText().toString()));
+                    pickupRequest.put("shirtprice",Double.parseDouble(shirtPrice.getText().toString()));
+                    pickupRequest.put("trouserqty", Double.parseDouble(trouserQty.getText().toString()));
+                    pickupRequest.put("trouserprice",Double.parseDouble(trouserPrice.getText().toString()));
+                    pickupRequest.put("jacketqty", Double.parseDouble(jacketQty.getText().toString()));
+                    pickupRequest.put("jacketprice",Double.parseDouble(jacketPrice.getText().toString()));
+
+                    pickupRequest.put("pickaddtype","home");
+                    pickupRequest.put("pickstreet", homS);
+                    pickupRequest.put("picksurburb", homSb);
+                    pickupRequest.put("pickcity", nomC);
+                    pickupRequest.put("pickcode", nomP);
+
+
+                   // FancyToast.makeText(getContext()," LOG "+ inNum.getText().toString(),
+                     //       FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+
+                    pickupRequest.put("invoicenum", Integer.parseInt(inNum.getText().toString()));
+
+                    pickupRequest.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e == null) {
+                                FancyToast.makeText(getContext(), "Request submitted successfully!", FancyToast.LENGTH_LONG,
+                                        FancyToast.SUCCESS, true).show();
+                                Intent newIntent = new Intent(getContext(), Invoice.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("UE",picku);
+                                bundle.putString("PD",pickd);
+                                bundle.putString("PT", pickt);
+                                bundle.putString("DD", deld);
+                                bundle.putString("DT", delt);
+                                bundle.putString("PT","home");
+                                bundle.putString("PS", homS);
+                                bundle.putString("PSb", homSb);
+                                bundle.putString("PC", nomC);
+                                bundle.putString("PCe", nomP);
+
+                                bundle.putString("IN",inNum.getText().toString());
+                                bundle.putString("SQ", suitQty.getText().toString());
+                                bundle.putString("SP", suitPrice.getText().toString());
+                                bundle.putString("DQ", dressQty.getText().toString());
+                                bundle.putString("DP", dressPrice.getText().toString());
+                                bundle.putString("ShQ",shirtQty.getText().toString());
+                                bundle.putString("ShP",shirtPrice.getText().toString());
+                                bundle.putString("TQ", trouserQty.getText().toString());
+                                bundle.putString("TP",trouserPrice.getText().toString());
+                                bundle.putString("JQ", jacketQty.getText().toString());
+                                bundle.putString("JP",jacketPrice.getText().toString());
+                                newIntent.putExtras(bundle);
+                                startActivity(newIntent);
+
+                            } else {
+                                FancyToast.makeText(getContext(), e.getMessage(),
+                                        FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+                            }
+
+                        }
+                    });
+                } catch (Exception e1) {
+
+                    FancyToast.makeText(getContext(), e1.getMessage(),
+                            FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+                }
+
+
 
 
             }
+
+
         });
 
         return view;
@@ -362,5 +489,35 @@ public class DryClean extends Fragment {
         totalPrice.setText(grandTot + "");
 
     }
+
+ public void getNextCount(){
+       final ParseQuery<ParseObject> queryAll = ParseQuery.getQuery("RequestNo");
+     queryAll.whereEqualTo("taxno","invoice");
+     queryAll.findInBackground(new FindCallback<ParseObject>() {
+         @Override
+         public void done(List<ParseObject> objects, ParseException e) {
+             if (objects.size() > 0 && e == null) {
+
+                 for (ParseObject kt : objects) {
+
+                     invoiceNum = kt.getInt("RequestNumber");
+
+                     inNum.setText(invoiceNum + "");
+
+                     invoiceNum = kt.getInt("RequestNumber")+ 1;
+                     kt.put("RequestNumber", invoiceNum);
+
+                     kt.saveInBackground();
+
+
+                 }
+             }
+
+
+         }
+     });
+
+    }
+
 
 }

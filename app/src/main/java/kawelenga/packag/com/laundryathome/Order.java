@@ -35,12 +35,31 @@ public class Order extends AppCompatActivity {
         //Get this now
 
         Bundle bundle = getIntent().getExtras();
-        String title = bundle.getString("PickD", "Default");
-        Toast.makeText(this, title, Toast.LENGTH_SHORT).show();
+        String picku = bundle.getString("UserE", "Default");
+        String pickd = bundle.getString("PickD", "Default");
+        String pickt = bundle.getString("PickT", "Default");
+        String deld = bundle.getString("DelD", "Default");
+        String delt = bundle.getString("DelT", "Default");
+
+        // Address
+        String homS = bundle.getString("HStre", "Default");
+        String homSb = bundle.getString("HSurb", "Default");
+        String nomC = bundle.getString("HCity", "Default");
+        String nomP = bundle.getString("HPost", "Default");
+
+        Toast.makeText(this, homS, Toast.LENGTH_SHORT).show();
 
         // This is the setting the arguments to fragments
-        bundle.putString("PickD",title);
+        bundle.putString("UserE",picku);
+        bundle.putString("PickD",pickd);
+        bundle.putString("PickT",pickt);
+        bundle.putString("DelD", deld);
+        bundle.putString("DelT", delt);
 
+        bundle.putString("HStre",homS);
+        bundle.putString("HSurb", homSb);
+        bundle.putString("HCity", nomC);
+        bundle.putString("HPost", nomP);
 
         // Get Adapater going
 
